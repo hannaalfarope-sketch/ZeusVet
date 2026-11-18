@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeusVet | Agenda Veterinaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Encabezado y menú de navegación -->
+    <header class="encabezado" id="inicio">
+        <div class="contenedor-navegacion">
+            <a href="#inicio" class="logo">🐾 ZeusVet</a>
+
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#agendar">Agendar cita</a>
+                <a href="#citas">Citas registradas</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Sección de bienvenida -->
+        <section class="bienvenida">
+            <div class="texto-bienvenida">
+                <span class="etiqueta">🐶 Cuidado para tus mejores amigos</span>
+
+                <h1>Cuidamos a quienes llenan tu vida de alegría</h1>
+
+                <p>
+                    En ZeusVet queremos acompañarte en el cuidado de tu mascota.
+                    Agenda sus citas de manera fácil y organiza sus visitas
+                    veterinarias en un solo lugar.
+                </p>
+
+                <a href="#agendar" class="boton-bienvenida">
+                    Agendar una cita
+                </a>
+            </div>
+
+            <div class="imagenes-bienvenida">
+                <img
+                    src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80"
+                    alt="Perro mirando a la cámara"
+                    class="imagen-perro"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80"
+                    alt="Gato mirando a la cámara"
+                    class="imagen-gato"
+                >
+            </div>
+        </section>
+
+        <!-- Formulario para registrar citas -->
+        <section class="seccion-formulario" id="agendar">
+            <div class="titulo-seccion">
+                <span>AGENDA VETERINARIA</span>
+                <h2>Agenda una cita</h2>
+                <p>Completa los datos para registrar la visita de tu mascota.</p>
+            </div>
+
+            <div class="tarjeta-formulario">
+                <form id="formularioCita">
+
+                    <div class="grupo-campo">
+                        <label for="nombreMascota">Nombre de la mascota:</label>
+                        <input type="text" id="nombreMascota" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="tipoMascota">Tipo de mascota:</label>
+                        <select id="tipoMascota" required>
+                            <option value="">Seleccione una opción</option>
+                            <option value="Perro">Perro</option>
+                            <option value="Gato">Gato</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="nombrePropietario">Nombre del propietario:</label>
+                        <input type="text" id="nombrePropietario" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="servicio">Servicio:</label>
+                        <select id="servicio" required>
+                            <option value="">Seleccione un servicio</option>
+                            <option value="Consulta general">Consulta general</option>
+                            <option value="Vacunación">Vacunación</option>
+                            <option value="Desparasitación">Desparasitación</option>
+                            <option value="Peluquería">Peluquería</option>
+                            <option value="Urgencias">Urgencias</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" required>
+                    </div>
+
+                    <div class="grupo-campo">
+                        <label for="hora">Hora:</label>
+                        <input type="time" id="hora" required>
+                    </div>
+
+                    <div class="grupo-campo campo-completo">
+                        <label for="motivo">Motivo de la cita:</label>
+                        <textarea id="motivo" rows="4" required></textarea>
+                    </div>
+
+                    <div class="campo-completo">
+                        <button type="submit">Registrar cita</button>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <!-- Sección donde JavaScript muestra las citas -->
+        <section class="seccion-citas" id="citas">
+            <div class="titulo-seccion">
+                <span>TUS REGISTROS</span>
+                <h2>Citas registradas</h2>
+                <p>Consulta y administra las citas de tus mascotas.</p>
+            </div>
+
+            <div id="listaCitas">
+                <p>Aún no hay citas registradas.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Pie de página -->
+    <footer>
+        <h2>🐾 ZeusVet</h2>
+        <p>El cuidado y bienestar de tu mascota es nuestra prioridad.</p>
+        <p class="texto-footer">Hecho con cariño para nuestros amigos de cuatro patas.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

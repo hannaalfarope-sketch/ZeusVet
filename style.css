@@ -1,0 +1,412 @@
+
+/* ESTILOS GENERALES */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f7fc;
+    color: #263746;
+    line-height: 1.6;
+}
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* ENCABEZADO Y NAVEGACION */
+.encabezado {
+    background-color: #123b5d;
+    padding: 17px 5%;
+}
+
+.contenedor-navegacion {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+nav a:hover {
+    color: #8ed8f5;
+}
+
+/* SECCION DE BIENVENIDA */
+.bienvenida {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 35px;
+    padding: 65px 10px;
+}
+
+.texto-bienvenida {
+    flex: 1;
+}
+
+.etiqueta {
+    display: inline-block;
+    background-color: #d8f0fb;
+    color: #17658f;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.texto-bienvenida h1 {
+    color: #123b5d;
+    font-size: 39px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+.texto-bienvenida p {
+    color: #586c7a;
+    font-size: 16px;
+    margin-bottom: 25px;
+    max-width: 480px;
+}
+
+.boton-bienvenida {
+    display: inline-block;
+    background-color: #17658f;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.boton-bienvenida:hover {
+    background-color: #104c70;
+}
+
+/* IMAGENES DE BIENVENIDA */
+.imagenes-bienvenida {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.imagenes-bienvenida img {
+    width: 45%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 18px;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(18, 59, 93, 0.12);
+}
+
+.imagen-gato {
+    margin-top: 45px;
+}
+
+/* TITULOS DE LAS SECCIONES */
+.titulo-seccion {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.titulo-seccion span {
+    color: #2386b5;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.titulo-seccion h2 {
+    color: #123b5d;
+    font-size: 28px;
+    margin: 5px 0;
+}
+
+.titulo-seccion p {
+    color: #687985;
+    font-size: 15px;
+}
+
+/* SECCION DEL FORMULARIO */
+.seccion-formulario {
+    padding: 45px 15px;
+    scroll-margin-top: 20px;
+}
+
+.tarjeta-formulario {
+    max-width: 720px;
+    margin: auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 4px 15px rgba(18, 59, 93, 0.09);
+}
+
+#formularioCita {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 17px;
+}
+
+.grupo-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+label {
+    color: #34495e;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbdce8;
+    border-radius: 7px;
+    background-color: #f9fcff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: #263746;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2386b5;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.campo-completo {
+    grid-column: 1 / -1;
+}
+
+/* BOTON REGISTRAR */
+#formularioCita button {
+    width: 100%;
+    background-color: #17658f;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 7px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#formularioCita button:hover {
+    background-color: #104c70;
+}
+
+/* SECCION DE CITAS */
+.seccion-citas {
+    padding: 45px 0 60px;
+    scroll-margin-top: 20px;
+}
+
+#listaCitas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+#listaCitas > p {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: #687985;
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/* TARJETAS CREADAS POR JAVASCRIPT */
+.tarjeta-cita {
+    background-color: white;
+    border: 1px solid #dce8f0;
+    border-left: 5px solid #39a6d2;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(18, 59, 93, 0.07);
+}
+
+.tarjeta-cita h3 {
+    color: #123b5d;
+    margin-bottom: 10px;
+}
+
+.tarjeta-cita p {
+    color: #526675;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+/* BOTONES EDITAR Y ELIMINAR */
+.tarjeta-cita button {
+    border: none;
+    padding: 9px 15px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    margin-top: 12px;
+    margin-right: 7px;
+    font-size: 14px;
+}
+
+/* EDITAR */
+.tarjeta-cita button:first-of-type {
+    background-color: #39a6d2;
+}
+
+.tarjeta-cita button:first-of-type:hover {
+    background-color: #2386b5;
+}
+
+/* ELIMINAR */
+.tarjeta-cita button:last-of-type {
+    background-color: #d9534f;
+}
+
+.tarjeta-cita button:last-of-type:hover {
+    background-color: #b93632;
+}
+
+/* PIE DE PAGINA */
+footer {
+    background-color: #123b5d;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+}
+
+footer h2 {
+    font-size: 23px;
+    margin-bottom: 8px;
+}
+
+footer p {
+    color: #dcecf7;
+    font-size: 14px;
+}
+
+.texto-footer {
+    margin-top: 8px;
+    font-size: 12px;
+}
+
+/* ADAPTACION PARA TABLETAS Y CELULARES */
+@media (max-width: 750px) {
+    .contenedor-navegacion {
+        flex-direction: column;
+    }
+
+    nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .bienvenida {
+        flex-direction: column;
+        padding: 40px 5px;
+    }
+
+    .texto-bienvenida {
+        text-align: center;
+    }
+
+    .texto-bienvenida h1 {
+        font-size: 32px;
+    }
+
+    .texto-bienvenida p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .imagenes-bienvenida {
+        width: 100%;
+    }
+
+    .imagenes-bienvenida img {
+        height: 220px;
+    }
+}
+
+@media (max-width: 550px) {
+    main {
+        width: 92%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .texto-bienvenida h1 {
+        font-size: 28px;
+    }
+
+    .imagenes-bienvenida img {
+        height: 170px;
+    }
+
+    .tarjeta-formulario {
+        padding: 20px 15px;
+    }
+
+    #formularioCita {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-completo {
+        grid-column: auto;
+    }
+
+    #listaCitas {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-seccion h2 {
+        font-size: 24px;
+    }
+}
