@@ -56,11 +56,6 @@ No es necesario instalar programas adicionales ni configurar un servidor para ut
 
 ### Página principal
 
-
-## Capturas de pantalla
-
-### Página principal
-
 ![Página principal de ZeusVet](capturas/inicio.png)
 
 ### Formulario de registro de citas
