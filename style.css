@@ -1,5 +1,10 @@
 
-/* ESTILOS GENERALES */
+
+/* =========================================================
+   ZEUSVET - ESTILOS GENERALES
+   ========================================================= */
+
+/* Configuración general de la página */
 * {
     margin: 0;
     padding: 0;
@@ -17,101 +22,129 @@ body {
     line-height: 1.6;
 }
 
+/* Contenido centrado */
 main {
-    width: 90%;
+    width: 100%;
     max-width: 1100px;
-    margin: auto;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* ENCABEZADO Y NAVEGACION */
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   1. ENCABEZADO Y MENÚ DE NAVEGACIÓN
+   ========================================================= */
+
 .encabezado {
     background-color: #123b5d;
-    padding: 17px 5%;
+    padding: 18px 20px;
+    box-shadow: 0 3px 12px rgba(18, 59, 93, 0.15);
 }
 
 .contenedor-navegacion {
-    max-width: 1200px;
-    margin: auto;
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
 }
 
+/* Logo */
 .logo {
     color: white;
-    font-size: 25px;
+    font-size: 27px;
     font-weight: bold;
-    text-decoration: none;
+    letter-spacing: 0.5px;
 }
 
-nav {
+/* Menú */
+.contenedor-navegacion nav ul {
     display: flex;
-    gap: 25px;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
 }
 
-nav a {
+.contenedor-navegacion nav a {
     color: white;
-    text-decoration: none;
     font-size: 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-nav a:hover {
+.contenedor-navegacion nav a:hover {
     color: #8ed8f5;
 }
 
-/* SECCION DE BIENVENIDA */
+
+/* =========================================================
+   2. SECCIÓN DE BIENVENIDA
+   ========================================================= */
+
 .bienvenida {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 35px;
-    padding: 65px 10px;
+    gap: 45px;
+    padding: 85px 0;
 }
 
+/* Columna del texto */
 .texto-bienvenida {
     flex: 1;
 }
 
+/* Etiqueta pequeña */
 .etiqueta {
     display: inline-block;
-    background-color: #d8f0fb;
+    background-color: #d9f2fc;
     color: #17658f;
-    padding: 7px 13px;
-    border-radius: 20px;
+    padding: 8px 17px;
+    border-radius: 25px;
     font-size: 13px;
-    margin-bottom: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
+/* Título principal */
 .texto-bienvenida h1 {
     color: #123b5d;
-    font-size: 39px;
+    font-size: 42px;
     line-height: 1.2;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
+/* Descripción */
 .texto-bienvenida p {
-    color: #586c7a;
     font-size: 16px;
-    margin-bottom: 25px;
-    max-width: 480px;
+    color: #526574;
+    margin-bottom: 28px;
+    line-height: 1.8;
 }
 
+/* Botón de bienvenida */
 .boton-bienvenida {
     display: inline-block;
     background-color: #17658f;
     color: white;
-    text-decoration: none;
-    padding: 12px 22px;
+    padding: 13px 27px;
     border-radius: 8px;
+    font-size: 15px;
     font-weight: bold;
+    transition: all 0.3s ease;
 }
 
 .boton-bienvenida:hover {
-    background-color: #104c70;
+    background-color: #123b5d;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(23, 101, 143, 0.25);
 }
 
-/* IMAGENES DE BIENVENIDA */
+/* Columna de imágenes */
 .imagenes-bienvenida {
     flex: 1;
     display: flex;
@@ -120,293 +153,344 @@ nav a:hover {
     gap: 15px;
 }
 
-.imagenes-bienvenida img {
-    width: 45%;
+/* Imágenes de las mascotas */
+.imagen-perro,
+.imagen-gato {
+    width: 50%;
     height: 260px;
     object-fit: cover;
     border-radius: 18px;
-    border: 5px solid white;
-    box-shadow: 0 5px 15px rgba(18, 59, 93, 0.12);
+    box-shadow: 0 8px 22px rgba(18, 59, 93, 0.15);
+    transition: transform 0.3s ease;
 }
 
-.imagen-gato {
-    margin-top: 45px;
+.imagen-perro:hover,
+.imagen-gato:hover {
+    transform: translateY(-5px);
 }
 
-/* TITULOS DE LAS SECCIONES */
-.titulo-seccion {
-    text-align: center;
-    margin-bottom: 25px;
-}
 
-.titulo-seccion span {
-    color: #2386b5;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 1px;
-}
+/* =========================================================
+   3. SECCIÓN DEL FORMULARIO DE CITAS
+   ========================================================= */
 
-.titulo-seccion h2 {
-    color: #123b5d;
-    font-size: 28px;
-    margin: 5px 0;
-}
-
-.titulo-seccion p {
-    color: #687985;
-    font-size: 15px;
-}
-
-/* SECCION DEL FORMULARIO */
 .seccion-formulario {
-    padding: 45px 15px;
-    scroll-margin-top: 20px;
+    padding: 65px 0;
 }
 
+/* Títulos de las secciones */
+.titulo-seccion {
+    color: #123b5d;
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+/* Tarjeta del formulario */
 .tarjeta-formulario {
     max-width: 720px;
-    margin: auto;
+    margin: 0 auto;
     background-color: white;
-    padding: 30px;
-    border-radius: 14px;
-    box-shadow: 0 4px 15px rgba(18, 59, 93, 0.09);
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow: 0 6px 25px rgba(18, 59, 93, 0.09);
 }
 
+/* Formulario en dos columnas */
 #formularioCita {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 17px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
+/* Grupo de cada campo */
 .grupo-campo {
     display: flex;
     flex-direction: column;
-    gap: 6px;
 }
 
-label {
-    color: #34495e;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-input,
-select,
-textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cbdce8;
-    border-radius: 7px;
-    background-color: #f9fcff;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: #263746;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #2386b5;
-}
-
-textarea {
-    resize: vertical;
-}
-
-.campo-completo {
-    grid-column: 1 / -1;
-}
-
-/* BOTON REGISTRAR */
+/* Campo de motivo y botón ocupan todo el ancho */
+.grupo-campo:has(textarea),
 #formularioCita button {
-    width: 100%;
-    background-color: #17658f;
-    color: white;
-    border: none;
-    padding: 13px;
-    border-radius: 7px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-#formularioCita button:hover {
-    background-color: #104c70;
-}
-
-/* SECCION DE CITAS */
-.seccion-citas {
-    padding: 45px 0 60px;
-    scroll-margin-top: 20px;
-}
-
-#listaCitas {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-}
-
-#listaCitas > p {
     grid-column: 1 / -1;
-    text-align: center;
-    color: #687985;
-    background-color: white;
-    padding: 25px;
-    border-radius: 10px;
 }
 
-/* TARJETAS CREADAS POR JAVASCRIPT */
-.tarjeta-cita {
-    background-color: white;
-    border: 1px solid #dce8f0;
-    border-left: 5px solid #39a6d2;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 3px 10px rgba(18, 59, 93, 0.07);
-}
-
-.tarjeta-cita h3 {
-    color: #123b5d;
-    margin-bottom: 10px;
-}
-
-.tarjeta-cita p {
-    color: #526675;
-    margin-bottom: 5px;
+/* Etiquetas del formulario */
+.grupo-campo label {
+    color: #263746;
     font-size: 14px;
-}
-
-/* BOTONES EDITAR Y ELIMINAR */
-.tarjeta-cita button {
-    border: none;
-    padding: 9px 15px;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    margin-top: 12px;
-    margin-right: 7px;
-    font-size: 14px;
-}
-
-/* EDITAR */
-.tarjeta-cita button:first-of-type {
-    background-color: #39a6d2;
-}
-
-.tarjeta-cita button:first-of-type:hover {
-    background-color: #2386b5;
-}
-
-/* ELIMINAR */
-.tarjeta-cita button:last-of-type {
-    background-color: #d9534f;
-}
-
-.tarjeta-cita button:last-of-type:hover {
-    background-color: #b93632;
-}
-
-/* PIE DE PAGINA */
-footer {
-    background-color: #123b5d;
-    color: white;
-    text-align: center;
-    padding: 30px 15px;
-}
-
-footer h2 {
-    font-size: 23px;
+    font-weight: bold;
     margin-bottom: 8px;
 }
 
-footer p {
-    color: #dcecf7;
+/* Inputs, listas y área de texto */
+.grupo-campo input,
+.grupo-campo select,
+.grupo-campo textarea {
+    width: 100%;
+    padding: 13px;
+    background-color: #f0f7fc;
+    border: 1px solid #d4e3ed;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
     font-size: 14px;
+    color: #263746;
+    outline: none;
+    transition: all 0.3s ease;
 }
 
-.texto-footer {
-    margin-top: 8px;
-    font-size: 12px;
+/* Efecto al seleccionar un campo */
+.grupo-campo input:focus,
+.grupo-campo select:focus,
+.grupo-campo textarea:focus {
+    border-color: #17658f;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(23, 101, 143, 0.12);
 }
 
-/* ADAPTACION PARA TABLETAS Y CELULARES */
-@media (max-width: 750px) {
-    .contenedor-navegacion {
-        flex-direction: column;
-    }
+/* Área de texto */
+.grupo-campo textarea {
+    resize: vertical;
+    min-height: 100px;
+}
 
-    nav {
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-    }
+/* Botón registrar */
+#formularioCita button {
+    background-color: #17658f;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+#formularioCita button:hover {
+    background-color: #123b5d;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(18, 59, 93, 0.2);
+}
+
+
+/* =========================================================
+   4. SECCIÓN DE CITAS REGISTRADAS
+   ========================================================= */
+
+.seccion-citas {
+    padding: 65px 0 85px;
+}
+
+/* Contenedor de las citas */
+#listaCitas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* Mensaje cuando no hay citas */
+.mensaje-vacio {
+    grid-column: 1 / -1;
+    text-align: center;
+    background-color: white;
+    color: #718494;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(18, 59, 93, 0.07);
+    font-size: 15px;
+}
+
+/* Tarjetas generadas por JavaScript */
+.tarjeta-cita {
+    background-color: white;
+    padding: 25px;
+    border-radius: 14px;
+    border-left: 5px solid #17658f;
+    box-shadow: 0 5px 18px rgba(18, 59, 93, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-cita:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 22px rgba(18, 59, 93, 0.13);
+}
+
+/* Títulos dentro de las tarjetas */
+.tarjeta-cita h3 {
+    color: #123b5d;
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+/* Información de las citas */
+.tarjeta-cita p {
+    color: #526574;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+/* Botones de las tarjetas */
+.tarjeta-cita button {
+    border: none;
+    padding: 9px 17px;
+    border-radius: 7px;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+/* Botón editar */
+.tarjeta-cita .btn-editar {
+    background-color: #17658f;
+}
+
+.tarjeta-cita .btn-editar:hover {
+    background-color: #123b5d;
+}
+
+/* Botón eliminar */
+.tarjeta-cita .btn-eliminar {
+    background-color: #dc4c4c;
+}
+
+.tarjeta-cita .btn-eliminar:hover {
+    background-color: #b52e2e;
+}
+
+
+/* =========================================================
+   5. PIE DE PÁGINA
+   ========================================================= */
+
+.pie-pagina {
+    background-color: #123b5d;
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+    margin-top: 20px;
+}
+
+.pie-pagina h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.pie-pagina p {
+    font-size: 14px;
+    color: #d9eaf5;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   6. DISEÑO RESPONSIVE PARA TABLETS
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    /* Bienvenida */
     .bienvenida {
-        flex-direction: column;
-        padding: 40px 5px;
-    }
-
-    .texto-bienvenida {
-        text-align: center;
+        gap: 25px;
     }
 
     .texto-bienvenida h1 {
-        font-size: 32px;
+        font-size: 34px;
+    }
+
+    .imagen-perro,
+    .imagen-gato {
+        height: 220px;
+    }
+
+}
+
+
+/* =========================================================
+   7. DISEÑO RESPONSIVE PARA CELULARES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Encabezado */
+    .contenedor-navegacion {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contenedor-navegacion nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .contenedor-navegacion nav a {
+        font-size: 13px;
+    }
+
+    /* Bienvenida */
+    .bienvenida {
+        flex-direction: column;
+        text-align: center;
+        padding: 55px 0;
+    }
+
+    .texto-bienvenida h1 {
+        font-size: 30px;
     }
 
     .texto-bienvenida p {
-        margin-left: auto;
-        margin-right: auto;
+        font-size: 14px;
     }
 
     .imagenes-bienvenida {
         width: 100%;
+        gap: 10px;
     }
 
-    .imagenes-bienvenida img {
-        height: 220px;
-    }
-}
-
-@media (max-width: 550px) {
-    main {
-        width: 92%;
+    .imagen-perro,
+    .imagen-gato {
+        height: 190px;
+        width: 50%;
     }
 
-    .logo {
-        font-size: 23px;
+    /* Formulario */
+    .seccion-formulario {
+        padding: 45px 0;
     }
 
-    nav a {
-        font-size: 13px;
-    }
-
-    .texto-bienvenida h1 {
-        font-size: 28px;
-    }
-
-    .imagenes-bienvenida img {
-        height: 170px;
+    .titulo-seccion {
+        font-size: 27px;
     }
 
     .tarjeta-formulario {
-        padding: 20px 15px;
+        padding: 22px;
     }
 
     #formularioCita {
         grid-template-columns: 1fr;
     }
 
-    .campo-completo {
-        grid-column: auto;
+    /* Citas */
+    .seccion-citas {
+        padding: 45px 0 60px;
     }
 
     #listaCitas {
         grid-template-columns: 1fr;
     }
 
-    .titulo-seccion h2 {
-        font-size: 24px;
+    .tarjeta-cita {
+        padding: 20px;
     }
+
+    /* Pie de página */
+    .pie-pagina {
+        padding: 30px 15px;
+    }
+
 }
