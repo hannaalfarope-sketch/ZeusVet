@@ -1,265 +1,356 @@
 
-// ==========================================
-// PROYECTO: ZEUSVET
-// CRUD: CREATE, READ, UPDATE Y DELETE
-// ==========================================
+/* =========================================================
+   ZEUSVET - CRUD DE CITAS VETERINARIAS
+   ========================================================= */
 
 
-// 1. OBTENER LOS ELEMENTOS DEL HTML
+/* =========================================================
+   1. OBTENER ELEMENTOS DEL HTML
+   ========================================================= */
 
-const formulario = document.getElementById("formularioCita");
+// Formulario principal
+const formularioCita = document.getElementById("formularioCita");
+
+// Contenedor donde se mostrarán las citas
 const listaCitas = document.getElementById("listaCitas");
 
-// Obtener el botón del formulario.
-const botonRegistrar = formulario.querySelector('button[type="submit"]');
+// Campos del formulario
+const nombreMascota = document.getElementById("nombreMascota");
+const tipoMascota = document.getElementById("tipoMascota");
+const nombrePropietario = document.getElementById("nombrePropietario");
+const servicio = document.getElementById("servicio");
+const fecha = document.getElementById("fecha");
+const hora = document.getElementById("hora");
+const motivo = document.getElementById("motivo");
+
+// Botón principal del formulario
+const botonRegistrar = formularioCita.querySelector('button[type="submit"]');
 
 
-// 2. CREAR EL ARREGLO DE CITAS
+/* =========================================================
+   2. CREAR EL ARREGLO Y RECUPERAR LAS CITAS
+   ========================================================= */
 
-// Recuperar las citas guardadas en localStorage.
-let citas = JSON.parse(localStorage.getItem("citas")) || [];
+// Arreglo donde se almacenarán las citas
+let citas = [];
+
+// Variable para identificar la cita que se está editando
+let indiceEdicion = null;
+
+// Recuperar las citas guardadas en localStorage
+const citasGuardadas = localStorage.getItem("citas");
+
+if (citasGuardadas !== null) {
+
+    try {
+
+        // Convertir los datos guardados en un arreglo
+        const datosRecuperados = JSON.parse(citasGuardadas);
+
+        // Comprobar que los datos sean un arreglo
+        if (Array.isArray(datosRecuperados)) {
+
+            citas = datosRecuperados;
+
+        }
+
+    } catch (error) {
+
+        // Si los datos no son válidos, iniciar con un arreglo vacío
+        citas = [];
+
+    }
+
+}
 
 
-// 3. VARIABLE PARA CONTROLAR LA EDICIÓN
-
-// -1 significa que no estamos editando ninguna cita.
-let indiceEditar = -1;
-
-
-// 4. FUNCIÓN PARA GUARDAR LAS CITAS
+/* =========================================================
+   3. FUNCIÓN PARA GUARDAR LAS CITAS
+   ========================================================= */
 
 function guardarCitas() {
 
+    // Convertir el arreglo a JSON y guardarlo
     localStorage.setItem("citas", JSON.stringify(citas));
 
 }
 
 
-// 5. FUNCIÓN PARA MOSTRAR LAS CITAS
+/* =========================================================
+   4. FUNCIÓN PARA LIMPIAR EL FORMULARIO
+   ========================================================= */
+
+function limpiarFormulario() {
+
+    // Limpiar todos los campos
+    formularioCita.reset();
+
+    // Finalizar el modo de edición
+    indiceEdicion = null;
+
+    // Restaurar el texto del botón principal
+    botonRegistrar.textContent = "Registrar cita";
+
+}
+
+
+/* =========================================================
+   5. FUNCIÓN PARA MOSTRAR LAS CITAS (READ)
+   ========================================================= */
 
 function mostrarCitas() {
 
-    // Limpiar la sección antes de mostrar las citas.
+    // Limpiar el contenedor antes de mostrar las citas
     listaCitas.innerHTML = "";
 
-    // Comprobar si no existen citas.
+    // Comprobar si no existen citas
     if (citas.length === 0) {
 
         const mensaje = document.createElement("p");
-        mensaje.textContent = "Aún no hay citas registradas.";
+
+        mensaje.className = "mensaje-vacio";
+        mensaje.textContent = "Aún no hay citas registradas";
 
         listaCitas.appendChild(mensaje);
 
         return;
+
     }
 
-    // Recorrer el arreglo de citas.
-    for (let i = 0; i < citas.length; i++) {
+    // Recorrer el arreglo de citas
+    citas.forEach(function(cita, indice) {
 
-        // Crear una tarjeta para cada cita.
+        // Evitar procesar datos que no sean objetos válidos
+        if (cita === null || typeof cita !== "object") {
+            return;
+        }
+
+        // Crear la tarjeta de la cita
         const tarjeta = document.createElement("div");
+
         tarjeta.className = "tarjeta-cita";
 
-        // Mostrar el nombre de la mascota.
+        // Crear el título con el nombre de la mascota
         const titulo = document.createElement("h3");
-        titulo.textContent = "Mascota: " + citas[i].nombreMascota;
+
+        titulo.textContent = cita.nombreMascota || "Sin nombre";
 
         tarjeta.appendChild(titulo);
 
-        // Crear una lista con los datos de la cita.
+        // Información de la cita
         const datos = [
-            "Tipo de mascota: " + citas[i].tipoMascota,
-            "Propietario: " + citas[i].nombrePropietario,
-            "Servicio: " + citas[i].servicio,
-            "Fecha: " + citas[i].fecha,
-            "Hora: " + citas[i].hora,
-            "Motivo: " + citas[i].motivo
+            "Tipo de mascota: " + (cita.tipoMascota || ""),
+            "Propietario: " + (cita.nombrePropietario || ""),
+            "Servicio: " + (cita.servicio || ""),
+            "Fecha: " + (cita.fecha || ""),
+            "Hora: " + (cita.hora || ""),
+            "Motivo: " + (cita.motivo || "")
         ];
 
-        // Recorrer los datos y agregarlos a la tarjeta.
-        for (let j = 0; j < datos.length; j++) {
+        // Crear un párrafo para cada dato
+        datos.forEach(function(dato) {
 
             const parrafo = document.createElement("p");
-            parrafo.textContent = datos[j];
+
+            parrafo.textContent = dato;
 
             tarjeta.appendChild(parrafo);
-        }
 
+        });
 
-        // CREAR EL BOTÓN EDITAR
-
+        // Crear botón Editar
         const botonEditar = document.createElement("button");
+
         botonEditar.textContent = "Editar";
+        botonEditar.className = "btn-editar";
         botonEditar.type = "button";
 
+        // Evento para editar la cita seleccionada
         botonEditar.addEventListener("click", function() {
 
-            editarCita(i);
+            editarCita(indice);
 
         });
 
-        tarjeta.appendChild(botonEditar);
-
-
-        // CREAR EL BOTÓN ELIMINAR
-
+        // Crear botón Eliminar
         const botonEliminar = document.createElement("button");
+
         botonEliminar.textContent = "Eliminar";
+        botonEliminar.className = "btn-eliminar";
         botonEliminar.type = "button";
 
+        // Evento para eliminar la cita seleccionada
         botonEliminar.addEventListener("click", function() {
 
-            eliminarCita(i);
+            eliminarCita(indice);
 
         });
 
+        // Agregar los botones a la tarjeta
+        tarjeta.appendChild(botonEditar);
         tarjeta.appendChild(botonEliminar);
 
-
-        // Agregar la tarjeta a la sección de citas.
+        // Agregar la tarjeta al contenedor de citas
         listaCitas.appendChild(tarjeta);
-    }
+
+    });
 
 }
 
 
-// 6. FUNCIÓN PARA EDITAR UNA CITA
+/* =========================================================
+   6. REGISTRAR UNA CITA (CREATE)
+   ========================================================= */
 
-function editarCita(indice) {
+// Escuchar el envío del formulario
+formularioCita.addEventListener("submit", function(event) {
 
-    // Guardar la posición de la cita seleccionada.
-    indiceEditar = indice;
-
-    // Colocar los datos de la cita en el formulario.
-    document.getElementById("nombreMascota").value = citas[indice].nombreMascota;
-
-    document.getElementById("tipoMascota").value = citas[indice].tipoMascota;
-
-    document.getElementById("nombrePropietario").value = citas[indice].nombrePropietario;
-
-    document.getElementById("servicio").value = citas[indice].servicio;
-
-    document.getElementById("fecha").value = citas[indice].fecha;
-
-    document.getElementById("hora").value = citas[indice].hora;
-
-    document.getElementById("motivo").value = citas[indice].motivo;
-
-    // Cambiar el texto del botón.
-    botonRegistrar.textContent = "Guardar cambios";
-
-    // Llevar al usuario hacia el formulario.
-    formulario.scrollIntoView({ behavior: "smooth" });
-
-}
-
-
-// 7. FUNCIÓN PARA ELIMINAR UNA CITA
-
-function eliminarCita(indice) {
-
-    // Preguntar si realmente desea eliminar la cita.
-    const confirmar = confirm("¿Está seguro de que desea eliminar esta cita?");
-
-    // Comprobar si el usuario aceptó.
-    if (confirmar) {
-
-        // Eliminar únicamente la cita seleccionada.
-        citas.splice(indice, 1);
-
-        // Guardar los cambios en localStorage.
-        guardarCitas();
-
-        // Actualizar la lista de citas.
-        mostrarCitas();
-
-        // Si estábamos editando una cita, cancelar la edición.
-        if (indiceEditar === indice) {
-
-            formulario.reset();
-
-            indiceEditar = -1;
-
-            botonRegistrar.textContent = "Registrar cita";
-
-        } else if (indiceEditar > indice) {
-
-            // Ajustar la posición si se eliminó una cita anterior.
-            indiceEditar--;
-
-        }
-
-        // Mostrar mensaje de confirmación.
-        alert("La cita se eliminó correctamente.");
-
-    }
-
-}
-
-
-// 8. CAPTURAR Y REGISTRAR O ACTUALIZAR UNA CITA
-
-formulario.addEventListener("submit", function(event) {
-
-    // Evitar que la página se recargue.
+    // Evitar que la página se recargue
     event.preventDefault();
 
-    // Crear un objeto con los datos del formulario.
+    // Validar que los campos obligatorios estén completos
+    if (!formularioCita.checkValidity()) {
+
+        formularioCita.reportValidity();
+
+        return;
+
+    }
+
+    // Crear un objeto con la información de la cita
     const nuevaCita = {
 
-        nombreMascota: document.getElementById("nombreMascota").value,
+        id: Date.now(),
 
-        tipoMascota: document.getElementById("tipoMascota").value,
-
-        nombrePropietario: document.getElementById("nombrePropietario").value,
-
-        servicio: document.getElementById("servicio").value,
-
-        fecha: document.getElementById("fecha").value,
-
-        hora: document.getElementById("hora").value,
-
-        motivo: document.getElementById("motivo").value
+        nombreMascota: nombreMascota.value,
+        tipoMascota: tipoMascota.value,
+        nombrePropietario: nombrePropietario.value,
+        servicio: servicio.value,
+        fecha: fecha.value,
+        hora: hora.value,
+        motivo: motivo.value
 
     };
 
+    // Comprobar si se está registrando o editando
+    if (indiceEdicion === null) {
 
-    // Comprobar si estamos registrando o editando.
-    if (indiceEditar === -1) {
-
-        // CREATE: agregar una nueva cita.
+        // Agregar la nueva cita al arreglo
         citas.push(nuevaCita);
 
-        alert("¡La cita se registró correctamente!");
+        alert("¡Cita registrada correctamente!");
 
     } else {
 
-        // UPDATE: reemplazar la cita seleccionada.
-        citas[indiceEditar] = nuevaCita;
+        // Conservar el identificador original
+        nuevaCita.id = citas[indiceEdicion].id;
 
-        alert("¡La cita se actualizó correctamente!");
+        // Actualizar la cita seleccionada
+        citas[indiceEdicion] = nuevaCita;
+
+        alert("¡Cita actualizada correctamente!");
 
     }
 
-
-    // Guardar los cambios en localStorage.
+    // Guardar los cambios
     guardarCitas();
 
-    // Mostrar nuevamente las citas.
+    // Mostrar nuevamente las citas
     mostrarCitas();
 
-    // Limpiar el formulario.
-    formulario.reset();
-
-    // Indicar que ya no estamos editando.
-    indiceEditar = -1;
-
-    // Devolver el texto original al botón.
-    botonRegistrar.textContent = "Registrar cita";
+    // Limpiar el formulario
+    limpiarFormulario();
 
 });
 
 
-// 9. MOSTRAR LAS CITAS AL ABRIR LA PÁGINA
+/* =========================================================
+   7. EDITAR UNA CITA (UPDATE)
+   ========================================================= */
 
+function editarCita(indice) {
+
+    // Obtener la cita seleccionada
+    const cita = citas[indice];
+
+    // Comprobar que la cita exista
+    if (!cita || typeof cita !== "object") {
+
+        alert("No se encontró la cita seleccionada.");
+
+        return;
+
+    }
+
+    // Cargar los datos en el formulario
+    nombreMascota.value = cita.nombreMascota || "";
+    tipoMascota.value = cita.tipoMascota || "";
+    nombrePropietario.value = cita.nombrePropietario || "";
+    servicio.value = cita.servicio || "";
+    fecha.value = cita.fecha || "";
+    hora.value = cita.hora || "";
+    motivo.value = cita.motivo || "";
+
+    // Guardar el índice de la cita que se está editando
+    indiceEdicion = indice;
+
+    // Cambiar el texto del botón
+    botonRegistrar.textContent = "Guardar cambios";
+
+    // Desplazarse hasta el formulario
+    document.getElementById("agendar").scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+
+/* =========================================================
+   8. ELIMINAR UNA CITA (DELETE)
+   ========================================================= */
+
+function eliminarCita(indice) {
+
+    // Solicitar confirmación antes de eliminar
+    const confirmar = confirm(
+        "¿Estás seguro de que deseas eliminar esta cita?"
+    );
+
+    if (confirmar) {
+
+        // Comprobar si se elimina la cita que se está editando
+        if (indiceEdicion === indice) {
+
+            // Limpiar el formulario y cancelar la edición
+            limpiarFormulario();
+
+        } else if (indiceEdicion !== null && indice < indiceEdicion) {
+
+            // Ajustar el índice porque se eliminó una cita anterior
+            indiceEdicion--;
+
+        }
+
+        // Eliminar la cita del arreglo
+        citas.splice(indice, 1);
+
+        // Actualizar los datos guardados
+        guardarCitas();
+
+        // Mostrar nuevamente las citas
+        mostrarCitas();
+
+        alert("Cita eliminada correctamente.");
+
+    }
+
+}
+
+
+/* =========================================================
+   9. MOSTRAR LAS CITAS AL INICIAR LA PÁGINA
+   ========================================================= */
+
+// Mostrar las citas recuperadas de localStorage
 mostrarCitas();
+
