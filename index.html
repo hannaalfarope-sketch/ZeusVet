@@ -1,97 +1,152 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>ZeusVet | Agenda Veterinaria</title>
+
+    <!-- Conexión con la hoja de estilos -->
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Encabezado y menú de navegación -->
-    <header class="encabezado" id="inicio">
+    <!-- ENCABEZADO Y MENÚ DE NAVEGACIÓN -->
+    <header class="encabezado">
         <div class="contenedor-navegacion">
-            <a href="#inicio" class="logo">🐾 ZeusVet</a>
 
+            <!-- Logo de ZeusVet -->
+            <a href="#inicio" class="logo">
+                🐾 ZeusVet
+            </a>
+
+            <!-- Menú principal -->
             <nav>
-                <a href="#inicio">Inicio</a>
-                <a href="#agendar">Agendar cita</a>
-                <a href="#citas">Citas registradas</a>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#agendar">Agendar cita</a></li>
+                    <li><a href="#citas">Citas registradas</a></li>
+                </ul>
             </nav>
+
         </div>
     </header>
 
+
+    <!-- SECCIÓN DE BIENVENIDA -->
     <main>
 
-        <!-- Sección de bienvenida -->
-        <section class="bienvenida">
-            <div class="texto-bienvenida">
-                <span class="etiqueta">🐶 Cuidado para tus mejores amigos</span>
+        <section class="bienvenida" id="inicio">
 
-                <h1>Cuidamos a quienes llenan tu vida de alegría</h1>
+            <!-- Texto de bienvenida -->
+            <div class="texto-bienvenida">
+
+                <span class="etiqueta">
+                    Cuidado para tus mejores amigos
+                </span>
+
+                <h1>
+                    Cuidamos a quienes llenan tu vida de alegría
+                </h1>
 
                 <p>
-                    En ZeusVet queremos acompañarte en el cuidado de tu mascota.
-                    Agenda sus citas de manera fácil y organiza sus visitas
-                    veterinarias en un solo lugar.
+                    En ZeusVet nos preocupamos por el bienestar de tus mascotas.
+                    Agenda sus citas veterinarias de manera fácil y rápida,
+                    y bríndales el cuidado que merecen.
                 </p>
 
                 <a href="#agendar" class="boton-bienvenida">
                     Agendar una cita
                 </a>
+
             </div>
 
+            <!-- Imágenes de las mascotas -->
             <div class="imagenes-bienvenida">
+
                 <img
-                    src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=600&q=80"
-                    alt="Perro mirando a la cámara"
+                    src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=600"
+                    alt="Perro de compañía"
                     class="imagen-perro"
                 >
 
                 <img
-                    src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=600&q=80"
-                    alt="Gato mirando a la cámara"
+                    src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w=600"
+                    alt="Gato de compañía"
                     class="imagen-gato"
                 >
+
             </div>
+
         </section>
 
-        <!-- Formulario para registrar citas -->
+
+        <!-- SECCIÓN DEL FORMULARIO DE CITAS -->
         <section class="seccion-formulario" id="agendar">
-            <div class="titulo-seccion">
-                <span>AGENDA VETERINARIA</span>
-                <h2>Agenda una cita</h2>
-                <p>Completa los datos para registrar la visita de tu mascota.</p>
-            </div>
+
+            <h2 class="titulo-seccion">
+                Agenda una cita
+            </h2>
 
             <div class="tarjeta-formulario">
+
+                <!-- Formulario para registrar una cita -->
                 <form id="formularioCita">
 
+                    <!-- Nombre de la mascota -->
                     <div class="grupo-campo">
-                        <label for="nombreMascota">Nombre de la mascota:</label>
-                        <input type="text" id="nombreMascota" required>
+                        <label for="nombreMascota">
+                            Nombre de la mascota
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombreMascota"
+                            placeholder="Ejemplo: Zeus"
+                            required
+                        >
                     </div>
 
+                    <!-- Tipo de mascota -->
                     <div class="grupo-campo">
-                        <label for="tipoMascota">Tipo de mascota:</label>
+                        <label for="tipoMascota">
+                            Tipo de mascota
+                        </label>
+
                         <select id="tipoMascota" required>
-                            <option value="">Seleccione una opción</option>
+                            <option value="">Selecciona una opción</option>
                             <option value="Perro">Perro</option>
                             <option value="Gato">Gato</option>
                             <option value="Otro">Otro</option>
                         </select>
                     </div>
 
+                    <!-- Nombre del propietario -->
                     <div class="grupo-campo">
-                        <label for="nombrePropietario">Nombre del propietario:</label>
-                        <input type="text" id="nombrePropietario" required>
+                        <label for="nombrePropietario">
+                            Nombre del propietario
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nombrePropietario"
+                            placeholder="Ingresa tu nombre"
+                            required
+                        >
                     </div>
 
+                    <!-- Servicio veterinario -->
                     <div class="grupo-campo">
-                        <label for="servicio">Servicio:</label>
+                        <label for="servicio">
+                            Servicio veterinario
+                        </label>
+
                         <select id="servicio" required>
-                            <option value="">Seleccione un servicio</option>
+                            <option value="">Selecciona un servicio</option>
                             <option value="Consulta general">Consulta general</option>
                             <option value="Vacunación">Vacunación</option>
                             <option value="Desparasitación">Desparasitación</option>
@@ -100,51 +155,98 @@
                         </select>
                     </div>
 
+                    <!-- Fecha de la cita -->
                     <div class="grupo-campo">
-                        <label for="fecha">Fecha:</label>
-                        <input type="date" id="fecha" required>
+                        <label for="fecha">
+                            Fecha de la cita
+                        </label>
+
+                        <input
+                            type="date"
+                            id="fecha"
+                            required
+                        >
                     </div>
 
+                    <!-- Hora de la cita -->
                     <div class="grupo-campo">
-                        <label for="hora">Hora:</label>
-                        <input type="time" id="hora" required>
+                        <label for="hora">
+                            Hora de la cita
+                        </label>
+
+                        <input
+                            type="time"
+                            id="hora"
+                            required
+                        >
                     </div>
 
-                    <div class="grupo-campo campo-completo">
-                        <label for="motivo">Motivo de la cita:</label>
-                        <textarea id="motivo" rows="4" required></textarea>
+                    <!-- Motivo de la cita -->
+                    <div class="grupo-campo">
+                        <label for="motivo">
+                            Motivo de la cita
+                        </label>
+
+                        <textarea
+                            id="motivo"
+                            placeholder="Describe brevemente el motivo de la cita"
+                            rows="4"
+                            required
+                        ></textarea>
                     </div>
 
-                    <div class="campo-completo">
-                        <button type="submit">Registrar cita</button>
-                    </div>
+                    <!-- Botón para registrar -->
+                    <button type="submit">
+                        Registrar cita
+                    </button>
 
                 </form>
+
             </div>
+
         </section>
 
-        <!-- Sección donde JavaScript muestra las citas -->
+
+        <!-- SECCIÓN DE CITAS REGISTRADAS -->
         <section class="seccion-citas" id="citas">
-            <div class="titulo-seccion">
-                <span>TUS REGISTROS</span>
-                <h2>Citas registradas</h2>
-                <p>Consulta y administra las citas de tus mascotas.</p>
+
+            <h2 class="titulo-seccion">
+                Citas registradas
+            </h2>
+
+            <!-- Aquí JavaScript mostrará las citas registradas -->
+            <div id="listaCitas">
+
+                <!-- Mensaje que aparece cuando no existen citas -->
+                <p class="mensaje-vacio">
+                    Aún no hay citas registradas
+                </p>
+
             </div>
 
-            <div id="listaCitas">
-                <p>Aún no hay citas registradas.</p>
-            </div>
         </section>
 
     </main>
 
-    <!-- Pie de página -->
-    <footer>
-        <h2>🐾 ZeusVet</h2>
-        <p>El cuidado y bienestar de tu mascota es nuestra prioridad.</p>
-        <p class="texto-footer">Hecho con cariño para nuestros amigos de cuatro patas.</p>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="pie-pagina">
+
+        <h3>🐾 ZeusVet</h3>
+
+        <p>
+            Cuidamos a tus mascotas con amor, compromiso y dedicación.
+        </p>
+
+        <p>
+            © 2026 ZeusVet - Todos los derechos reservados.
+        </p>
+
     </footer>
 
+
+    <!-- Conexión con el archivo JavaScript -->
     <script src="script.js"></script>
+
 </body>
 </html>
