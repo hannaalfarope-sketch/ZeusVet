@@ -56,15 +56,15 @@ No es necesario instalar programas adicionales ni configurar un servidor para ut
 
 ### Página principal
 
-[Página principal de ZeusVet](https://github.com/hannaalfarope-sketch/ZeusVet/blob/main/capturas/inicio.png)
+<img src="https://raw.githubusercontent.com/hannaalfarope-sketch/ZeusVet/main/capturas/inicio.png" width="700">
 
 ### Formulario de registro de citas
 
-[Formulario de ZeusVet](https://github.com/hannaalfarope-sketch/ZeusVet/blob/main/capturas/formulario.png)
+<img src="https://raw.githubusercontent.com/hannaalfarope-sketch/ZeusVet/main/capturas/formulario.png" width="700">
 
 ### Citas registradas
 
-[Citas registradas en ZeusVet](https://github.com/hannaalfarope-sketch/ZeusVet/blob/main/capturas/citas-registradas.png)
+<img src="https://raw.githubusercontent.com/hannaalfarope-sketch/ZeusVet/main/capturas/citas-registradas.png" width="700">
 
 ## 7. Prompts utilizados durante el desarrollo
 
