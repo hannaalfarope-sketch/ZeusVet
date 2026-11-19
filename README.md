@@ -56,6 +56,11 @@ No es necesario instalar programas adicionales ni configurar un servidor para ut
 
 ### Página principal
 
+
+## Capturas de pantalla
+
+### Página principal
+
 ![Página principal de ZeusVet](capturas/inicio.png)
 
 ### Formulario de registro de citas
@@ -65,6 +70,7 @@ No es necesario instalar programas adicionales ni configurar un servidor para ut
 ### Citas registradas
 
 ![Citas registradas en ZeusVet](capturas/citas-registradas.png)
+
 
 ## 7. Prompts utilizados durante el desarrollo
 
